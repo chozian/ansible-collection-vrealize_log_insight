@@ -1,8 +1,10 @@
 ---
 - name: Ensure vRealize Log Insight Agent is installed
-  package:
+  yum:
     name: "{{ vrealize_log_insight_agent_download_url }}"
     state: present
+    validate_certs: no
+    disable_gpg_check: yes
 
 - name: Configure vRealize Log Insight Agent ini file
   ini_file:
