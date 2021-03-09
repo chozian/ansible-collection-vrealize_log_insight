@@ -5,6 +5,10 @@
     state: present
     validate_certs: no
     disable_gpg_check: yes
+  register: ins_log_insight_agent
+  until: ins_log_insight_agent.failed != 1
+  retries: 3
+  delay: 5
 
 - name: Configure vRealize Log Insight Agent ini file
   ini_file:
